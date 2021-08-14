@@ -32,6 +32,7 @@ int main(void)
 		set_position(i,70);
 		printf("BOSS\n");
 		fflush(stdout);
+		clear_screen();
 		wait(500);
 		i++;
 	}
