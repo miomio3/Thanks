@@ -1,44 +1,21 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/time.h>
-#include <time.h>
+#include "tetris.h"
 
-#define	clear_screen()		printf("\033[2J");
-#define set_char_color(n)	printf("\033[3%dm", n);
-#define set_back_color(n)	printf("\033[4%dm", n);
-#define set_position(x, y)	printf("\033[%d;%dH", x, y);
-#define BLACK				0
-#define RED					1
-#define GREEN				2
-#define YELLOW				3
-#define BLUE				4
-#define MAGENDA				5
-#define CYAN				6
-#define WHITE				7
-#define DEFAULT				9
-
-int wait(int msec);
-
-int main(void)
+void	initialize(void)
 {
-	int	i;
-
-	i = 0;
-	clear_screen();
 	set_char_color(YELLOW);
 	set_back_color(BLACK);
-	while (i < 10)
-	{
-		set_position(i,70);
-		printf("BOSS\n");
-		fflush(stdout);
-		clear_screen();
-		wait(500);
-		i++;
-	}
-	set_back_color(DEFAULT);
+	set_attribute(NORMAL);
+	clear_screen();
+	cursol_off();
+}
+
+void	reset(void)
+{
 	set_char_color(DEFAULT);
-	return (0);
+	set_back_color(DEFAULT);
+	set_attribute(NORMAL);
+	clear_screen();
+	cursol_on();
 }
 
 int wait(int msec)
@@ -48,4 +25,33 @@ int wait(int msec)
 	r.tv_sec = 0;
 	r.tv_nsec = msec * 1000L * 1000L;
 	return (nanosleep(&r, NULL));
+}
+
+int main(void)
+{
+	int	y;
+
+	y = 0;
+	initialize();
+	while (y < 10)
+	{
+		set_position(40, y);
+		set_char_color(YELLOW);
+		set_back_color(BLACK);
+		set_attribute(REVERSE);
+		printf("  ");
+		fflush(stdout);
+
+		wait(500);
+
+		set_position(40, y);
+		set_char_color(YELLOW);
+		set_back_color(BLACK);
+		set_attribute(NORMAL);
+		printf("  ");
+		fflush(stdout);
+		y++;
+	}
+	reset();
+	return (0);
 }
