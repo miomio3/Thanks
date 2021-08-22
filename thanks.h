@@ -1,8 +1,16 @@
+#ifndef TETRIS_H
+#define TETRIS_H
+
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <time.h>
+#include <stdlib.h>
 
+#define BUFF_SIZE			100
 #define	clear_screen()		printf("\033[2J");
 #define set_char_color(n)	printf("\033[3%dm", n);
 #define set_back_color(n)	printf("\033[4%dm", n);
@@ -17,35 +25,12 @@
 #define WHITE				7
 #define DEFAULT				9
 
-int wait(int msec);
+int 	ft_wait(int msec);
+char	*ft_read(int fd);
+void	end(void);
+void	init(void);
+void	ft_putstr(char *s);
+size_t	ft_strlen(char *s);
+void	thanks(void);
 
-int main(void)
-{
-	int	i;
-
-	i = 0;
-	clear_screen();
-	set_char_color(YELLOW);
-	set_back_color(BLACK);
-	while (i < 10)
-	{
-		set_position(i,70);
-		printf("BOSS\n");
-		fflush(stdout);
-		clear_screen();
-		wait(500);
-		i++;
-	}
-	set_back_color(DEFAULT);
-	set_char_color(DEFAULT);
-	return (0);
-}
-
-int wait(int msec)
-{
-	struct timespec r;
-
-	r.tv_sec = 0;
-	r.tv_nsec = msec * 1000L * 1000L;
-	return (nanosleep(&r, NULL));
-}
+#endif
