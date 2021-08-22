@@ -1,28 +1,22 @@
 #include "thanks.h"
 
-int	create_line(char **buf, char **line)
+char	*create_line(int fd, size_t *len)
 {
-	char	*p;
-	char	*tmp1;
+	char	*tmp;
 	char	*tmp2;
+	char	*line;
 
-	p = ft_strchr(*buf, '\n');
-	if (p != NULL)
+	line = ft_strdup("");
+	while (1)
 	{
-		tmp1 = ft_substr(*buf, p);
-		tmp2 = ft_strjoin(*line, tmp1);
-		free(*line);
-		free(tmp1);
-		*line = tmp2;
-		return (STOP);
+		tmp = get_next_line(fd);
+		if (tmp == NULL)
+			break;
+		*len = *len + 1;
+		tmp2 = ft_strjoin(line ,tmp);
+		free(line);
+		free(tmp);
+		line = tmp2;
 	}
-	else
-	{
-		tmp1 = ft_strdup(*buf);
-		tmp2 = ft_strjoin(*line, tmp1);
-		free(*line);
-		free(tmp1);
-		*line = tmp2;
-		return (CONTINUE);
-	}
+	return(line);
 }

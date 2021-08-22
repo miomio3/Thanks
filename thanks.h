@@ -10,6 +10,13 @@
 #include <time.h>
 #include <stdlib.h>
 
+typedef struct s_list
+{
+	struct s_list	*next;
+	int				fd;
+	char			*buf;
+}t_list;
+
 #define CONTINUE			1
 #define STOP				0
 #define BUFF_SIZE			100
@@ -32,13 +39,19 @@ char	*ft_read(int fd);
 void	end(void);
 void	init(void);
 void	ft_putstr(char *s);
-size_t	ft_strlen(char *s);
+size_t	ft_strlen(const char *str);
 void	thanks(void);
-char	*ft_strdup(char *buf);
-char	*ft_substr(char *buf, char *p);
-char	*ft_strchr(char *buf, char n);
-int		create_line(char **buf, char **line);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(const char *src);
+char	*ft_substr(char const *s, const char *s1);
+char	*ft_strchr(const char *s, int c);
+char	*create_line(int fd, size_t *len);
+char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_calloc(size_t count, size_t size);
+void	join_free(t_list **list, char **line, char **tmp2, char *p);
+char	*listbuf_join2(t_list **list);
+char	*listbuf_join(t_list **list, int f);
+char	*free_list(t_list **list);
+int		create_list(t_list **tmp, int fd);
+char	*get_next_line(int fd);
 
 #endif

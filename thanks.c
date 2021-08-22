@@ -9,30 +9,20 @@ int main(void)
 
 void	thanks(void)
 {
-	int			i;
 	int 		fd;
-	int			f;
-	static char	*buf;
+	size_t		len;
 	char		*line;
 
-	i = 0;
-	f = 1;
 	init();
-	line = ft_strdup("");
-	fd = open("boss.txt", O_RDONLY);
+	fd = open("thanks.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putstr("fail\n");
 		return ;
 	}
-	while (f)
-	{
-		buf = ft_read(fd);
-		if (buf == NULL)
-			buf = ft_read(fd);
-		f = create_line(&buf, &line);
-	}
-	printf("%s\n", line);
+	len = 0;
+	line = create_line(fd, &len);
+	printf("%s", line);
 	end();
 }
 
