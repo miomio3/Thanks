@@ -10,7 +10,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define CONTINUE				1
+#define CONTINUE			1
 #define STOP				0
 #define BUFF_SIZE			100
 #define	clear_screen()		printf("\033[2J");
@@ -38,5 +38,7 @@ char	*ft_strdup(char *buf);
 char	*ft_substr(char *buf, char *p);
 char	*ft_strchr(char *buf, char n);
 int		create_line(char **buf, char **line);
+char	*ft_strjoin(char *s1, char *s2);
+void	*ft_calloc(size_t count, size_t size);
 
 #endif

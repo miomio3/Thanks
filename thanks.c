@@ -3,32 +3,35 @@
 int main(void)
 {
 	thanks();
+	thanks();
 	return (0);
 }
 
 void	thanks(void)
 {
-	int		i;
-	int 	fd;
-	int		f;
-	char	*buf;
-	char	*line;
+	int			i;
+	int 		fd;
+	int			f;
+	static char	*buf;
+	char		*line;
 
 	i = 0;
 	f = 1;
 	init();
-	fd = open("test.txt", O_RDONLY);
+	line = ft_strdup("");
+	fd = open("boss.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putstr("fail\n");
 		return ;
 	}
-	buf = ft_read(fd);
-	printf("%s\n", buf);
-	if (buf == NULL)
-		return ;
 	while (f)
+	{
+		buf = ft_read(fd);
+		if (buf == NULL)
+			buf = ft_read(fd);
 		f = create_line(&buf, &line);
+	}
 	printf("%s\n", line);
 	end();
 }
