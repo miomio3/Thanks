@@ -10,20 +10,26 @@ void	thanks(void)
 {
 	int		i;
 	int 	fd;
+	int		f;
 	char	*buf;
+	char	*line;
 
 	i = 0;
+	f = 1;
 	init();
-	fd = open("thanks.txt", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putstr("fail\n");
 		return ;
 	}
 	buf = ft_read(fd);
+	printf("%s\n", buf);
 	if (buf == NULL)
 		return ;
-	printf("%s", buf);
+	while (f)
+		f = create_line(&buf, &line);
+	printf("%s\n", line);
 	end();
 }
 

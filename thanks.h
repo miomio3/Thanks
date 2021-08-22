@@ -10,6 +10,8 @@
 #include <time.h>
 #include <stdlib.h>
 
+#define CONTINUE				1
+#define STOP				0
 #define BUFF_SIZE			100
 #define	clear_screen()		printf("\033[2J");
 #define set_char_color(n)	printf("\033[3%dm", n);
@@ -32,5 +34,9 @@ void	init(void);
 void	ft_putstr(char *s);
 size_t	ft_strlen(char *s);
 void	thanks(void);
+char	*ft_strdup(char *buf);
+char	*ft_substr(char *buf, char *p);
+char	*ft_strchr(char *buf, char n);
+int		create_line(char **buf, char **line);
 
 #endif
