@@ -24,8 +24,8 @@ typedef struct s_list
 #define set_char_color(n)	printf("\033[3%dm", n);
 #define set_back_color(n)	printf("\033[4%dm", n);
 #define set_position(y, x)	printf("\033[%d;%dH", y, x);
-#define cursol_on()			printf("¥033[?25h");
-#define cursol_off()		printf("¥033[?25l");
+#define cursol_on()			printf("\033[?25h");
+#define cursol_off()		printf("\033[?25l");
 #define BLACK				0
 #define RED					1
 #define GREEN				2

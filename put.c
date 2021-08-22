@@ -17,6 +17,7 @@ void	print_thanks(int line2[LINE_1][LINE_2])
 		fflush(stdout);
 		ft_wait(500);
 		clear_screen();
+		fflush(stdout);
 		i= 0;
 		j++;
 	}
@@ -32,9 +33,9 @@ void	print_line(int line2[LINE_1][LINE_2], int line1)
 	while(i <= line1)
 	{
 		j = 0;
-		while(line2[LINE_1 - i][j])
+		while(line2[i][j])
 		{
-			set_position(line1 - i, line2[LINE_1 - i][j]);
+			set_position(i, line2[i][j]);
 			printf(" ");
 			j++;
 		}
