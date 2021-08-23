@@ -48,7 +48,7 @@ void	print_boss0(void)
 {
 	set_char_color(WHITE);
 	set_back_color(BLACK);
-	set_position(7, 60);
+	set_position(10, 50);
 	set_attribute(NORMAL);
 	printf("BOSS");
 	fflush(stdout);
@@ -56,7 +56,7 @@ void	print_boss0(void)
 	clear_screen();
 }
 
-void	print_boss(void)
+void	print_boss(char *boss)
 {
 	int		fd;
 	char	*line;
@@ -64,9 +64,8 @@ void	print_boss(void)
 	size_t	len;
 	int		i;
 
-	print_boss0();
 	set_attribute(REVERSE);
-	fd = open("boss.txt", O_RDONLY);
+	fd = open(boss, O_RDONLY);
 	if(fd == -1)
 	{
 		printf("fail\n");
