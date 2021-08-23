@@ -66,7 +66,10 @@ int		create_list(t_list **tmp, int fd);
 char	*get_next_line(int fd);
 void	init_line2(int line[LINE_1][LINE_2]);
 void	create_line2(char *line, int line2[LINE_1][LINE_2]);
-void	print_line(int line2[LINE_1][LINE_2], int i);
+void	print_thanks2(int line2[LINE_1][LINE_2], int i);
 void	print_thanks(int line2[LINE_1][LINE_2]);
+void	print_boss(void);
+void	print_boss0(void);
+void	print_boss2(int line2[LINE_1][LINE_2]);
 
 #endif

@@ -17,7 +17,7 @@ void	thanks(void)
 
 	init();
 	fd = open("thanks.txt", O_RDONLY);
-	if (fd == -1)
+	if(fd == -1)
 	{
 		printf("fail\n");
 		return ;
@@ -28,6 +28,7 @@ void	thanks(void)
 	create_line2(line, line2);
 	set_attribute(REVERSE);
 	print_thanks(line2);
+	print_boss();
 	end();
 }
 
